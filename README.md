@@ -1,5 +1,101 @@
 # Pop<br>
 
+Pop is a Kivy/KivyMD component that provides a customizable and movable "window" with support for minimizing, maximizing, resizing, and a hover tooltip. <br>
+
+<p align="center">
+<a href="https://youtu.be/4xKg6wrlKkk">
+<img src="https://img.youtube.com/vi/4xKg6wrlKkk/0.jpg" alt="Pop Presentation Preview" width="480"/>
+</a>
+</p>
+
+> **Presentation Video:** [Discover Pop on YouTube](https://youtu.be/4xKg6wrlKkk)<br>
+
+---
+
+## Key Features<br>
+
+- **Moveable**: Click and drag on the title bar to reposition the window.<br>
+- **Minimize/Restore**: Toggles between a minimized circle and the original size, with double-click and right-click animations.<br>
+- **Maximize/Restore**: Toggles to full screen and returns to the saved size.<br>
+- **Resizable** : Borders detected to dynamically adjust width and height.<br>
+- **Content Clip**: Automatically hides anything that exceeds the content area.<br>
+- **Tooltip**: Displays the title on hover when minimized.<br>
+- KivyMD Styles (MDCard, MDIconButton) for elegant integration.<br>
+
+---
+
+## Installation<br>
+
+Make sure you have Python 3.10+ and install the dependencies:<br>
+
+```bash
+pip install kivy kivymd
+```
+Then, place the pop.py module (containing the ClipWidget, DraggableHeader, and Pop classes) in your project, for example:<br>
+
+your_project/<br>
+├── main.py<br>
+└── mods/<br>
+└── widgets/<br>
+└── pop.py<br>
+
+⸻
+
+Usage<br>
+
+1. Import the class<br>
+```python
+from mods.widgets.pop import Pop
+from kivy.uix.label import Label
+```
+2. Create and open a Pop
+```python
+# Create some content, here a simple Label
+content = Label(text="Hello Pop!", size_hint=(1, 1))
+
+# Instantiate the Pop window
+pop = Pop(
+title="My Custom Pop",
+content=content,
+original_size=[400, 300],
+popup_pos=[50, 50]
+)
+
+# Add Pop to the main window
+pop.open()
+```
+
+Your users will then be able to:<br>
+• Click and drag the bar to move the window.<br>
+• Minimize to Clicking the "-" button or double-clicking.<br>
+• Maximize by clicking the "□" button.<br>
+• Restore the original size by clicking the "□" button again.<br>
+• Resize by dragging the edges (10px sensitivity).
+
+⸻
+
+Quick API<br>
+
+Property Type Description<br>
+state StringProperty "normal", "minimized", or "maximized"<br>
+original_size ListProperty Saved size for restoration<br>
+popup_pos ListProperty Current position of the popup
+
+Method Description<br>
+toggle_minimize() Toggles between minimized and normal size<br>
+toggle_maximize() Toggles between full screen and normal size<br>
+dismiss() Closes and removes the popup from the parent<br>
+open(win=Window) Adds the popup to the win window
+
+⸻
+
+Customization<br>
+• Styles: Change md_bg_color, elevation, or radius after creation.<br>
+• Throttle: Adjust the double_click_threshold for the double-click speed.<br>
+• Tooltip: Change the appearance of the label in _show_tooltip().
+
+# Pop<br>
+
 Pop est un composant Kivy/KivyMD qui fournit une « fenêtre » personnalisable et déplaçable, avec support de la minimisation, de la maximisation, du redimensionnement, et d’un tooltip au survol.  <br>
 
 <p align="center">
